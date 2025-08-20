@@ -1,0 +1,23 @@
+{% extends 'books/base.html' %}
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+  <div class="card shadow-lg border-0 rounded-4">
+    <div class="row g-0">
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title text-primary">{{ book.title }}</h2>
+          <h5 class="text-muted">by {{ book.author }}</h5>
+          <p class="mt-3">{{ book.description }}</p>
+
+          <p class="fw-bold text-success fs-4">{{ book.year }}</p>
+          <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg rounded-pill">Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

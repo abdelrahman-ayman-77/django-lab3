@@ -2,52 +2,12 @@
 {% block title %}Home Page{% endblock %}
 
 {% block body %}
-<h2 class="mb-4 text-center">Add New Trainee</h2>
+<div class="container text-center mt-5">
+    <h1 class="mb-4">Welcome to Book Manager</h1>
 
-    <form action="{% url 'add'%}" method="POST" class="card p-4 shadow-sm">
-        {% csrf_token %}
-        <div class="row g-3 align-items-end">
-            <div class="col-md-4">
-                <label class="form-label">Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Enter trainee name"required>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Enter trainee email"required>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Track</label>
-                <input type="text" name="track" class="form-control" placeholder="e.g. Web Development, AI"required>
-            </div>
-        </div>
-
-        <div class="mt-4 text-center">
-            <button type="submit" class="btn btn-primary px-5">Add</button>
-        </div>
-    </form>
-
-<h1>Trainees</h1>
-    <table border="1" cellpadding="8">
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>track</th>
-        </tr>
-        {% if trainees %}
-    {% for trainee in trainees %}
-        <tr>
-            <td>{{ trainee.name }}</td>
-            <td>{{ trainee.email }}</td>
-            <td>{{ trainee.track }}</td>
-            <td>
-                <a href="{% url 'update' forloop.counter0 %}">Edit</a> |
-                <a href="{% url 'delete' forloop.counter0 %}">Delete</a>
-            </td>
-        </tr>
-    {% endfor %}
-{% else %}
-    <tr><td colspan="4">No trainees yet</td></tr>
-{% endif %}
-    </table>
-
+    <div class="d-grid gap-3 col-6 mx-auto">
+        <a href="{% url 'add' %}" class="btn btn-primary btn-lg rounded-pill">➕ Add New Book</a>
+        <a href="{% url 'allbooks' %}" class="btn btn-outline-secondary btn-lg rounded-pill">📚 View All Books</a>
+    </div>
+</div>
 {% endblock %}

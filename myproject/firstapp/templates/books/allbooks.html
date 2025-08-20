@@ -1,0 +1,29 @@
+{% extends 'books/base.html' %}
+{% block title %}All Books{% endblock %}
+
+{% block body %}
+<h1>Books</h1>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>title</th>
+            <th>author</th>
+            <th>year</th>
+        </tr>
+        {% if books %}
+    {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.year }}</td>
+            <td>
+                <a href="{% url 'update' book.id %}">Update</a>
+                <a href="{% url 'delete' book.id %}">Delete</a>
+                <a href="{% url 'details' book.id %}">details</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% else %}
+    <tr><td colspan="4">No books yet</td></tr>
+{% endif %}
+    </table>
+{% endblock %}    
